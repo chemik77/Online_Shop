@@ -13,8 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "suppliers")
 public class Supplier implements Serializable {
 
 	private static final long serialVersionUID = -2092982788376410280L;
