@@ -1,7 +1,5 @@
 package pl.chemik77.onlineshop.model;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,22 +7,16 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "customers")
-public class Customer implements Serializable {
+public class Customer extends BaseEntity {
 
 	private static final long serialVersionUID = -5112016439577161853L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "last_name")
@@ -44,24 +36,7 @@ public class Customer implements Serializable {
 	@OneToMany(mappedBy = "customer")
 	private Set<Review> reviews = new HashSet<>();
 
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
-	@Column(name = "created_by")
-	private String createdBy;
-	@Column(name = "last_modified_date")
-	private LocalDateTime lastModifiedDate;
-	@Column(name = "last_modified_by")
-	private String lastModifiedBy;
-
 	public Customer() {
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -126,38 +101,6 @@ public class Customer implements Serializable {
 
 	public void setReviews(Set<Review> reviews) {
 		this.reviews = reviews;
-	}
-
-	public LocalDateTime getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDateTime createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public LocalDateTime getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
-
-	public String getLastModifiedBy() {
-		return lastModifiedBy;
-	}
-
-	public void setLastModifiedBy(String lastModifiedBy) {
-		this.lastModifiedBy = lastModifiedBy;
 	}
 
 	@Override
